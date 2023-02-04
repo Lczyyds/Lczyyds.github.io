@@ -1,0 +1,192 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>MFC基础 | -摸鱼的喵-</title><meta name="author" content="摸鱼"><meta name="copyright" content="摸鱼"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="当创建的多个窗体时，修改在解决方案的App.xaml中的StartupUri&#x3D;”对应路径” 内容控件Label 类宽度为width⾼度为height内容为content⽔平⽅向排列设置 需要⽤到HorizontalAlignment垂直⽅向排列设置 需要⽤到VerticalAlignment外边距 使⽤Margin 四个数字 对应⽅向分别为 左上右下,⼀个数字 代表所有⽅向的外边距两个数">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MFC基础">
+<meta property="og:url" content="http://lczyyds.github.io/draft/MFC%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80.html">
+<meta property="og:site_name" content="-摸鱼的喵-">
+<meta property="og:description" content="当创建的多个窗体时，修改在解决方案的App.xaml中的StartupUri&#x3D;”对应路径” 内容控件Label 类宽度为width⾼度为height内容为content⽔平⽅向排列设置 需要⽤到HorizontalAlignment垂直⽅向排列设置 需要⽤到VerticalAlignment外边距 使⽤Margin 四个数字 对应⽅向分别为 左上右下,⼀个数字 代表所有⽅向的外边距两个数">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-02-04T02:26:15.702Z">
+<meta property="article:modified_time" content="2023-02-04T01:16:00.992Z">
+<meta property="article:author" content="摸鱼">
+<meta property="article:tag" content="C#">
+<meta property="article:tag" content="MFC">
+<meta name="twitter:card" content="summary"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://lczyyds.github.io/draft/MFC%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'MFC基础',
+  isPost: false,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-02-04 09:16:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/me.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">-摸鱼的喵-</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="page-site-info"><h1 id="site-title">MFC基础</h1></div></header><main class="layout" id="content-inner"><div id="page"><div id="article-container"><p>当创建的多个窗体时，修改在解决方案的App.xaml中的StartupUri&#x3D;”对应路径”</p>
+<h1 id="内容控件"><a href="#内容控件" class="headerlink" title="内容控件"></a>内容控件</h1><h2 id="Label-类"><a href="#Label-类" class="headerlink" title="Label 类"></a>Label 类</h2><p>宽度为width<br>⾼度为height<br>内容为content<br>⽔平⽅向排列设置 需要⽤到HorizontalAlignment<br>垂直⽅向排列设置 需要⽤到VerticalAlignment<br>外边距 使⽤Margin 四个数字 对应⽅向分别为 左上右下,⼀个数字 代表所有⽅向的外边距两个数字 分别代表 左右 上下<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/api/system.windows.controls.label?view=windowsdesktop-7.0&viewFallbackFrom=dotnet-plat-ext-6.0">其他属性</a></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Label Width=<span class="string">&quot;180&quot;</span> Height=<span class="string">&quot;30&quot;</span> Content=<span class="string">&quot;我是个label控件&quot;</span> HorizontalAlignment=<span class="string">&quot;Right&quot;</span> VerticalAlignment=<span class="string">&quot;Top&quot;</span> Margin=<span class="string">&quot;0,10&quot;</span> FontSize=<span class="string">&quot;18&quot;</span> Foreground=<span class="string">&quot;Blue&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="TextBlock-类"><a href="#TextBlock-类" class="headerlink" title="TextBlock 类"></a>TextBlock 类</h2><p>提供一个轻型控件，用于显示少量流内容。</p>
+<p>1.TextBlock 设置的text内容 如果标签⾥⾯有⽂本内容 会将其加到text内容后⾯<br>2.如果想进⾏换⾏操作 可以在Textblock双标签⾥⾯ 加上LineBreak标签在之后的内容就会换⾏</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;TextBlock Text=<span class="string">&quot;我是个TextBlock33&quot;</span> FontSize=<span class="string">&quot;30&quot;</span> FontWeight=<span class="string">&quot;Light&quot;</span> Foreground=<span class="string">&quot;Red&quot;</span>&gt;</span><br><span class="line">我是⽂本⼀&lt;LineBreak/&gt;</span><br><span class="line">我是⽂本⼆&lt;LineBreak/&gt;</span><br><span class="line">我是⽂本三</span><br><span class="line">&lt;/TextBlock&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="Button"><a href="#Button" class="headerlink" title="Button"></a>Button</h2><table>
+<thead>
+<tr>
+<th><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/api/system.windows.controls.button?view=windowsdesktop-7.0#events">事件</a></th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Click</td>
+<td>单击button时</td>
+</tr>
+<tr>
+<td>MouseMove</td>
+<td>鼠标滑过</td>
+</tr>
+</tbody></table>
+<figure class="highlight c#"><figcaption><span>MainWindow.xaml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;Button Width=<span class="string">&quot;178&quot;</span> Height=<span class="string">&quot;30&quot;</span> HorizontalAlignment=<span class="string">&quot;Left&quot;</span></span><br><span class="line">        VerticalAlignment=<span class="string">&quot;Top&quot;</span> Content=<span class="string">&quot;我是个按钮&quot;</span> </span><br><span class="line">        Margin=<span class="string">&quot;22,74,50,50&quot;</span> Background=<span class="string">&quot;Teal&quot;</span> </span><br><span class="line">        BorderThickness=<span class="string">&quot;5,0,10,0&quot;</span> </span><br><span class="line">        BorderBrush=<span class="string">&quot;Transparent&quot;</span> </span><br><span class="line">        Foreground=<span class="string">&quot;White&quot;</span> </span><br><span class="line">        MouseMove=<span class="string">&quot;Button_MouseMove&quot;</span></span><br><span class="line">        RenderTransformOrigin=<span class="string">&quot;0.551,2.443&quot;</span>/&gt;</span><br><span class="line"></span><br><span class="line">&lt;Button Width=<span class="string">&quot;100&quot;</span> Height=<span class="string">&quot;30&quot;</span> </span><br><span class="line">        HorizontalAlignment=<span class="string">&quot;Left&quot;</span> VerticalAlignment=<span class="string">&quot;Top&quot;</span> </span><br><span class="line">        Margin=<span class="string">&quot;100,200,0,0&quot;</span> </span><br><span class="line">        Background=<span class="string">&quot;AntiqueWhite&quot;</span> BorderBrush=<span class="string">&quot;Aquamarine&quot;</span> Foreground=<span class="string">&quot;Cyan&quot;</span></span><br><span class="line">        Click=<span class="string">&quot;Button_Click&quot;</span></span><br><span class="line">        &gt;</span><br><span class="line">    </span><br><span class="line">&lt;/Button&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c#"><figcaption><span>MainWindow.xaml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Button_Click</span>(<span class="params"><span class="built_in">object</span> sender, RoutedEventArgs e</span>)</span></span><br><span class="line">       &#123;</span><br><span class="line">           MessageBox.Show(<span class="string">&quot;按钮被点击 &quot;</span>);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Button_MouseMove</span>(<span class="params"><span class="built_in">object</span> sender, MouseEventArgs e</span>)</span></span><br><span class="line">       &#123;</span><br><span class="line">           MessageBox.Show(<span class="string">&quot;鼠标划过&quot;</span>);</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Border"><a href="#Border" class="headerlink" title="Border"></a>Border</h2><p>在另一个元素四周绘制边框和&#x2F;或背景。</p>
+<h3 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h3><p>Border 只能有一个子级。 若要显示多个子元素，需要在父 Border内放置一个附加Panel元素。 然后，可以在该 Panel 元素中放置子元素。<br>如果要在内容周围显示边框，必须将元素放在父 Border 元素中。</p>
+<p>BorderThickness边框宽度默认为0 直接设置⼀个参数 代表的是四周宽度<br>BorderThickness 有四个参数时 分别代表左边 上边 右边 下边<br>我们设置边框颜⾊加上边框宽度 才能准确显示边框的效果<br>如果我们需要设置⻆的弧度 需要使⽤CornerRadius属性</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;Border Width=<span class="string">&quot;500&quot;</span> Height=<span class="string">&quot;300&quot;</span> Background=<span class="string">&quot;LightPink&quot;</span></span><br><span class="line">        BorderBrush=<span class="string">&quot;AntiqueWhite&quot;</span> BorderThickness=<span class="string">&quot;20&quot;</span></span><br><span class="line">        CornerRadius=<span class="string">&quot;15&quot;</span></span><br><span class="line">        &gt;</span><br><span class="line">    &lt;Grid&gt;</span><br><span class="line">        &lt;Label Content=<span class="string">&quot;我是一个Label&quot;</span> HorizontalAlignment=<span class="string">&quot;Left&quot;</span> VerticalAlignment=<span class="string">&quot;Center&quot;</span> FontSize=<span class="string">&quot;30&quot;</span> FontWeight=<span class="string">&quot;ExtraBold&quot;</span> &gt;</span><br><span class="line"></span><br><span class="line">        &lt;/Label&gt;</span><br><span class="line">        &lt;Border Width=<span class="string">&quot;100&quot;</span> Height=<span class="string">&quot;30&quot;</span> </span><br><span class="line">        HorizontalAlignment=<span class="string">&quot;Left&quot;</span> VerticalAlignment=<span class="string">&quot;Top&quot;</span></span><br><span class="line">        Margin=<span class="string">&quot;50,158,0,0&quot;</span></span><br><span class="line">        Background=<span class="string">&quot;Fuchsia&quot;</span> BorderBrush=<span class="string">&quot;Transparent&quot;</span></span><br><span class="line">        CornerRadius=<span class="string">&quot;10&quot;</span></span><br><span class="line">        &gt;</span><br><span class="line">            &lt;Button Background=<span class="string">&quot;Transparent&quot;</span> BorderBrush=<span class="string">&quot;Transparent&quot;</span> Click=<span class="string">&quot;Button_Click&quot;</span>&gt;</span><br><span class="line"></span><br><span class="line">            &lt;/Button&gt;</span><br><span class="line">        &lt;/Border&gt;</span><br><span class="line">    &lt;/Grid&gt;   </span><br><span class="line">&lt;/Border&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="RadioButton"><a href="#RadioButton" class="headerlink" title="RadioButton"></a>RadioButton</h2><p>当与其他 RadioButton 控件成对出现时，使用户能够从一组选项中选择一个选项。</p>
+<h3 id="注解-1"><a href="#注解-1" class="headerlink" title="注解"></a>注解</h3><p>控件 RadioButton 可以显示文本、一个 Image或两者。<br>当用户选择一个选项按钮 (也称为组中的单选按钮) 时，其他人会自动清除。</p>
+<p>radioButton 如果需要实现分组的效果</p>
+<ol>
+<li>使⽤布局容器来嵌套 （如grid &#x2F;stackPanel等等）</li>
+<li>可以使⽤groupName进⾏区分 分组</li>
+</ol>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;RadioButton GroupName=<span class="string">&quot;subject&quot;</span> Width=<span class="string">&quot;100&quot;</span> Height=<span class="string">&quot;30&quot;</span> HorizontalContentAlignment=<span class="string">&quot;Left&quot;</span> VerticalAlignment=<span class="string">&quot;Top&quot;</span> Content=<span class="string">&quot;数学&quot;</span> FontSize=<span class="string">&quot;20&quot;</span> Foreground=<span class="string">&quot;DarkGoldenrod&quot;</span> Margin=<span class="string">&quot;10,0&quot;</span> Checked=<span class="string">&quot;RadioButton_Checked&quot;</span>&gt;&lt;/RadioButton&gt;</span><br><span class="line">&lt;RadioButton GroupName=<span class="string">&quot;subject&quot;</span> Width=<span class="string">&quot;100&quot;</span> Height=<span class="string">&quot;30&quot;</span> HorizontalContentAlignment=<span class="string">&quot;Left&quot;</span> VerticalAlignment=<span class="string">&quot;Top&quot;</span> Content=<span class="string">&quot;英语&quot;</span> FontSize=<span class="string">&quot;20&quot;</span> Foreground=<span class="string">&quot;DarkGoldenrod&quot;</span> Margin=<span class="string">&quot;10,45&quot;</span> Checked=<span class="string">&quot;RadioButton_Checked&quot;</span>&gt;&lt;/RadioButton&gt;</span><br><span class="line">&lt;RadioButton GroupName=<span class="string">&quot;subject&quot;</span> Width=<span class="string">&quot;100&quot;</span> Height=<span class="string">&quot;30&quot;</span> HorizontalContentAlignment=<span class="string">&quot;Left&quot;</span> VerticalAlignment=<span class="string">&quot;Top&quot;</span> Content=<span class="string">&quot;826&quot;</span> FontSize=<span class="string">&quot;20&quot;</span> Foreground=<span class="string">&quot;DarkGoldenrod&quot;</span>  Margin=<span class="string">&quot;10,90&quot;</span> Checked=<span class="string">&quot;RadioButton_Checked&quot;</span>&gt;&lt;/RadioButton&gt;</span><br><span class="line">&lt;RadioButton GroupName=<span class="string">&quot;subject&quot;</span> Width=<span class="string">&quot;100&quot;</span> Height=<span class="string">&quot;30&quot;</span> HorizontalContentAlignment=<span class="string">&quot;Left&quot;</span> VerticalAlignment=<span class="string">&quot;Top&quot;</span> Content=<span class="string">&quot;政治&quot;</span> FontSize=<span class="string">&quot;20&quot;</span> Foreground=<span class="string">&quot;DarkGoldenrod&quot;</span> Margin=<span class="string">&quot;10,135&quot;</span> Checked=<span class="string">&quot;RadioButton_Checked&quot;</span>&gt;&lt;/RadioButton&gt;</span><br><span class="line"></span><br><span class="line">&lt;RadioButton GroupName=<span class="string">&quot;school&quot;</span> Width=<span class="string">&quot;100&quot;</span> Height=<span class="string">&quot;30&quot;</span> HorizontalContentAlignment=<span class="string">&quot;Left&quot;</span> VerticalAlignment=<span class="string">&quot;Top&quot;</span> Content=<span class="string">&quot;东A&quot;</span> FontSize=<span class="string">&quot;20&quot;</span> Foreground=<span class="string">&quot;DarkGoldenrod&quot;</span> Margin=<span class="string">&quot;447,100,246.6,0&quot;</span> Checked=<span class="string">&quot;RadioButton_Checked&quot;</span>&gt;&lt;/RadioButton&gt;</span><br><span class="line">&lt;RadioButton GroupName=<span class="string">&quot;school&quot;</span> Width=<span class="string">&quot;100&quot;</span> Height=<span class="string">&quot;30&quot;</span> HorizontalContentAlignment=<span class="string">&quot;Left&quot;</span> VerticalAlignment=<span class="string">&quot;Top&quot;</span> Content=<span class="string">&quot;东B&quot;</span> FontSize=<span class="string">&quot;20&quot;</span> Foreground=<span class="string">&quot;DarkGoldenrod&quot;</span> Margin=<span class="string">&quot;447,25,246.6,0&quot;</span> Checked=<span class="string">&quot;RadioButton_Checked&quot;</span>&gt;&lt;/RadioButton&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="CheckBox"><a href="#CheckBox" class="headerlink" title="CheckBox"></a>CheckBox</h1><p>表示用户选择或者清楚的控件，有三种状态，选中、未选中（清楚）、不确定</p>
+<figure class="highlight c#"><figcaption><span>.XMAL</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;Grid Name=<span class="string">&quot;gridMain&quot;</span>&gt;</span><br><span class="line">    &lt;Label VerticalAlignment=<span class="string">&quot;Top&quot;</span> Width=<span class="string">&quot;120&quot;</span> FontSize=<span class="string">&quot;20&quot;</span> Background=<span class="string">&quot;Orange&quot;</span> Foreground=<span class="string">&quot;White&quot;</span>&gt;我的选课:&lt;/Label&gt;</span><br><span class="line">    &lt;CheckBox Content=<span class="string">&quot;C语⾔&quot;</span> Margin=<span class="string">&quot;300,50&quot;</span> VerticalAlignment=<span class="string">&quot;Top&quot;</span> HorizontalAlignment=<span class="string">&quot;Left&quot;</span> Width=<span class="string">&quot;120&quot;</span> Height=<span class="string">&quot;30&quot;</span> FontSize=<span class="string">&quot;18&quot;</span> BorderBrush=<span class="string">&quot;blue&quot;</span>&gt;&lt;/CheckBox&gt;</span><br><span class="line">    &lt;CheckBox Content=<span class="string">&quot;计算机组成原理&quot;</span> Margin=<span class="string">&quot;300,80&quot;</span> VerticalAlignment=<span class="string">&quot;Top&quot;</span> HorizontalAlignment=<span class="string">&quot;Left&quot;</span> Width=<span class="string">&quot;150&quot;</span> Height=<span class="string">&quot;30&quot;</span> FontSize=<span class="string">&quot;18&quot;</span> IsChecked=<span class="string">&quot;True&quot;</span>&gt;&lt;/CheckBox&gt;</span><br><span class="line">    &lt;CheckBox Content=<span class="string">&quot;计算机⽹络&quot;</span> Margin=<span class="string">&quot;300,110&quot;</span> VerticalAlignment=<span class="string">&quot;Top&quot;</span> HorizontalAlignment=<span class="string">&quot;Left&quot;</span> Width=<span class="string">&quot;120&quot;</span> Height=<span class="string">&quot;30&quot;</span> FontSize=<span class="string">&quot;18&quot;</span>&gt;&lt;/CheckBox&gt;</span><br><span class="line">    &lt;Button Content=<span class="string">&quot;获取我的选课&quot;</span> Width=<span class="string">&quot;120&quot;</span> Height=<span class="string">&quot;30&quot;</span> Click=<span class="string">&quot;Button_Click&quot;</span>  HorizontalAlignment=<span class="string">&quot;Left&quot;</span> Margin=<span class="string">&quot;331,182,0,0&quot;</span> VerticalAlignment=<span class="string">&quot;Top&quot;</span>/&gt;</span><br><span class="line">&lt;/Grid&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c#"><figcaption><span>.XMAL.cs</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">UIElementCollection children = gridMain.Children;</span><br><span class="line">StringBuilder sbf = <span class="keyword">new</span> StringBuilder(<span class="string">&quot;我的选课为:&quot;</span>);</span><br><span class="line"><span class="keyword">foreach</span> (UIElement item <span class="keyword">in</span> children)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (item <span class="keyword">is</span> CheckBox &amp;&amp; (item <span class="keyword">as</span> CheckBox).IsChecked.Value)</span><br><span class="line">    &#123;</span><br><span class="line">        sbf.Append((item <span class="keyword">as</span> CheckBox).Content + <span class="string">&quot;,&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">MessageBox.Show(sbf.ToString());</span><br></pre></td></tr></table></figure>
+<h1 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h1></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/me.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">摸鱼</div><div class="author-info__description">一切过往，皆为序章。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Lczyyds"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Lczyyds" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:onlylcz@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://space.bilibili.com/471175608?spm_id_from=333.1007.0.0" target="_blank" title="BiliBili"><i class="fas fa-brands fa-bilibili"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/02/04/MFC%E5%85%A5%E9%97%A8/" title="无题"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2023/02/04/MFC%E5%85%A5%E9%97%A8/" title="无题">无题</a><time datetime="2023-02-04T02:27:05.920Z" title="发表于 2023-02-04 10:27:05">2023-02-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/25/B%E7%AB%99%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%88%97%E8%A1%A8%E7%88%AC%E5%8F%96/" title="B站视频播放列表爬取"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="B站视频播放列表爬取"/></a><div class="content"><a class="title" href="/2023/01/25/B%E7%AB%99%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%88%97%E8%A1%A8%E7%88%AC%E5%8F%96/" title="B站视频播放列表爬取">B站视频播放列表爬取</a><time datetime="2023-01-25T14:49:05.497Z" title="发表于 2023-01-25 22:49:05">2023-01-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/25/20230125%E8%BE%A9%E8%AE%BA%E8%B5%9B%E9%A2%98%E7%9B%AE/" title="辩论赛题目"><img src="/img/2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="辩论赛题目"/></a><div class="content"><a class="title" href="/2023/01/25/20230125%E8%BE%A9%E8%AE%BA%E8%B5%9B%E9%A2%98%E7%9B%AE/" title="辩论赛题目">辩论赛题目</a><time datetime="2023-01-25T14:10:15.003Z" title="发表于 2023-01-25 22:10:15">2023-01-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/18/test3/" title="test3"><img src="/img/me.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="test3"/></a><div class="content"><a class="title" href="/2023/01/18/test3/" title="test3">test3</a><time datetime="2023-01-18T01:46:29.000Z" title="发表于 2023-01-18 09:46:29">2023-01-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/17/20230117markdown/" title="markdown语法"><img src="/img/3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="markdown语法"/></a><div class="content"><a class="title" href="/2023/01/17/20230117markdown/" title="markdown语法">markdown语法</a><time datetime="2023-01-17T01:56:55.000Z" title="发表于 2023-01-17 09:56:55">2023-01-17</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%AF%BE%E8%AE%BE/"><span class="card-category-list-name">课设</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%BE%A9%E8%AE%BA%E8%B5%9B/"><span class="card-category-list-name">辩论赛</span><span class="card-category-list-count">1</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/esp/" style="font-size: 1.1em; color: #999">esp</a> <a href="/tags/unity/" style="font-size: 1.1em; color: #999">unity</a> <a href="/tags/%E6%96%B0%E5%9B%BD%E8%BE%A9/" style="font-size: 1.1em; color: #999">新国辩</a> <a href="/tags/%E8%80%81%E5%8F%8B%E8%B5%9B/" style="font-size: 1.1em; color: #999">老友赛</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/02/"><span class="card-archive-list-date">二月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/01/"><span class="card-archive-list-date">一月 2023</span><span class="card-archive-list-count">9</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">10</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-02-04T06:52:08.911Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By 摸鱼</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
